@@ -71,52 +71,106 @@ session_start();?>
       <h2>Referrals <button class="btn">get $10</button></h2>
       <p></p>
     </div>
+
     <div class="alterar">
       <form class="form" method="post" action="../alterar.php">
       <h2>Nome Completo</h2>
-        <input placeholder = "<?php echo $_SESSION ['nome']?>"> </input>
+        <input name = "nomeCompleto" value = "<?php echo $_SESSION ['nome']?>"> </input>
+
+      <h2> Senha </h2>
+        <input name="password" value="Senha"> </input>
 
       <h2>Curso</h2>
-        <p><?php $curso= $_SESSION['curso'];
-        if ($curso==1){
-         echo "Informatica";
-        }else {
-         echo "Hospedagem";
-        }?></p>
+        <p>
+          <select  name = "curso" required>
+            
+              <?php  
+                  if ($_SESSION['curso'] !== '1') { ?>
+                    <option value = "2">Hospedagem</option>
+                    <option value = "1"> Informática </option>
+              <?php } ?>
+
+              <?php  
+                  if ($_SESSION['curso'] !== '2') { ?>
+                    <option value = "1"> Informática</option>
+                    <option value = "2"> Hospedagem </option>
+              <?php } ?>
+
+          </select>
+        </p>
 
       <h2>Turma</h2>
-        <p> <?php echo $_SESSION ['turma']?>
+        <p>
           <select  name= "turma" required>
-              <option value="" disabled selected>Selecione uma opção</option>
-              <option value = "1A"> 1A </option>
-              <option value = "1B"> 1B </option>
-              <option value = "1H"> 1H </option>
-              <option value = "2A"> 2A </option>
-              <option value = "2B"> 2B </option>
-              <option value = "2H"> 2H </option>
-              <option value = "3A"> 3A </option>
-              <option value = "3B"> 3B </option>
-              <option value = "3H"> 3H </option>
+              <option><?php echo $_SESSION['turma']; ?></option>
+                
+                <?php  
+                  if ($_SESSION['turma'] !== '1A') { ?>
+                    <option value = "1A"> 1A </option>
+                <?php } ?>
+
+                <?php  
+                  if ($_SESSION['turma'] !== '1B') { ?>
+                    <option value = "1B"> 1B </option>
+                <?php } ?>
+
+                <?php  
+                  if ($_SESSION['turma'] !== '1H') { ?>
+                    <option value = "1H"> 1H </option>
+                <?php } ?>
+
+                <?php  
+                  if ($_SESSION['turma'] !== '2A') { ?>
+                    <option value = "2A"> 2A </option>
+                <?php } ?>
+
+                <?php  
+                  if ($_SESSION['turma'] !== '2B') { ?>
+                    <option value = "2B"> 2B </option>
+                <?php } ?>  
+
+                <?php  
+                  if ($_SESSION['turma'] !== '2H') { ?>
+                    <option value = "2H"> 2H </option>
+                <?php } ?> 
+
+                <?php  
+                  if ($_SESSION['turma'] !== '3A') { ?>
+                    <option value = "3A"> 3A </option>
+                <?php } ?>
+
+                <?php  
+                  if ($_SESSION['turma'] !== '3B') { ?>
+                    <option value = "3B"> 3B </option>
+                <?php } ?>
+
+                <?php  
+                  if ($_SESSION['turma'] !== '3H') { ?>
+                    <option value = "3H"> 3H </option>
+                <?php } ?>
+
           </select>
         </p>
 
       <h2>Matricula</h2>
-        <input placeholder = "<?php echo $_SESSION ['matricula']?>"> </input>
+        <input name= "matricula" value = '<?php echo $_SESSION ['matricula']?>'> </input>
 
       <h2>Data de Nascimento</h2>
-        <input placeholder = "<?php echo $_SESSION ['data_nasc']?>"><?php
-          echo "  ";
-          ?>
-        </input>
+        <input name= "dataDeNascimento" value = '<?php echo $_SESSION ['data_nasc']?>'></input>
 
       <h2>rg</h2>
-        <input placeholder = "<?php echo $_SESSION ['rg']?>"> </input>
+        <input name= "rg" value = "<?php echo $_SESSION ['rg']?>"> </input>
 
       <h2>Telefone</h2>
-        <input placeholder = "<?php echo $_SESSION ['telefone']?>">  </input>
+        <input name="phone" value = "<?php echo $_SESSION ['telefone']?>">  </input>
 
       <h2>Email</h2>
-        <input placeholder = "<?php echo $_SESSION ['email']?>">  </input>
+        <input name= "email" value = "<?php echo $_SESSION ['email']?>">  </input>
+        
+      </br>
+
+      <button class="" name= "alterar" >Alterar</button>
+
       </form>
     </div>
   </div>
