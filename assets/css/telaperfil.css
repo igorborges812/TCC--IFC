@@ -172,4 +172,20 @@ a:hover{
     min-width: 60px;
 }
 
-  
+#selecionado{
+color:green;
+}
+
+#reservado{
+  color:red;
+  }
+  #livre{
+    color:gray;
+    }
+
+.form{
+
+  font-family: body;
+  text-transform: uppercase;
+  font-size: 10px;
+}
