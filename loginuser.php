@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
         $resultUsu = "SELECT * FROM aluno WHERE email = '{$email}'";
         $resultadoUsu = mysqli_query($mysqli, $resultUsu);
         $linhaUsu = mysqli_fetch_assoc($resultadoUsu);
-        $_SESSION['cod']= $linhaUsu['cod'];
+        $_SESSION['codA']= $linhaUsu['codA'];
         $_SESSION['matricula'] = $linhaUsu['matricula'];
         $_SESSION['email'] = $linhaUsu['email'];
         $_SESSION['senha'] = $linhaUsu['senha'];
@@ -30,11 +30,11 @@ if (isset($_POST['login'])) {
         $resultUsu = "SELECT * FROM docente WHERE email = '{$email}'";
         $resultadoUsu = mysqli_query($mysqli, $resultUsu);
         $linhaUsu = mysqli_fetch_assoc($resultadoUsu);
-        $_SESSION['cod']= $linhaUsu['cod'];
+        $_SESSION['codD']= $linhaUsu['codD'];
         $_SESSION['SIAPE'] = $linhaUsu['SIAPE'];
         $_SESSION['email'] = $linhaUsu['email'];
         $_SESSION['senha'] = $linhaUsu['senha'];
-        $_SESSION['nome'] = $linhaUsu['nome'];
+        $_SESSION['nomeD'] = $linhaUsu['nomeD'];
         $_SESSION['rg'] = $linhaUsu['rg'];
         $_SESSION['foto'] = $linhaUsu['foto'];
         $_SESSION['telefone'] = $linhaUsu['telefone'];

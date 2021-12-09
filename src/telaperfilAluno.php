@@ -25,8 +25,8 @@ session_start();?>
   <div class="rightbox">
     <div class="profile ">
       <h1>Informações de Perfil</h1>
-      <div ><img class="imagem-perfil" src="https://image.flaticon.com/icons/svg/236/236831.svg">
       
+      <div >
         <h2>Nome Completo</h2>
         <p> <?php echo $_SESSION['nome'];?> </p>
        <h2>Curso</h2>
@@ -70,9 +70,9 @@ session_start();?>
 </head>
 
 <body onload="onLoaderFunc()">
-  
+ 
+<form class="forma" method="post" action= "../armario.php">
 <div class="seatStructure">
-
   
 <table id="seatsBlock">
  <p id="notification"></p>
@@ -89,7 +89,19 @@ session_start();?>
 	if($contador == 0){?>
   <tr>
 	<?php }?>
-		<td><input type="checkbox" class="seats" value=" <?php echo $row_usu['numero'] ; ?>"></td>
+
+    <?php 
+      if ($row_usu['disponivel'] == 0 ){ ?>
+       <td><input type="checkbox" class = 'seatsG' name = "meucheckbox" value=" <?php echo $row_usu['numero'] ; ?>"></td>
+            
+
+
+     <?php } 
+     else if ($row_usu['disponivel'] == 1 ){ ?>
+     <td><input type="checkbox" class = 'seatsR' id= "seatsR" name = "meucheckbox" value=" <?php echo $row_usu['numero'] ; ?>" disabled></td>
+
+     <?php } ?>
+
 		<?php
 	$contador++; 
 	if($contador == 10){?>
@@ -99,6 +111,7 @@ session_start();?>
 
 </tr>
 </table>
+
 <aside>
   <p><ul type="square">
 <li id= "selecionado">Selecionado</li>
@@ -106,29 +119,15 @@ session_start();?>
 <li id= "livre">Livre</li>
 </ul></p>
 </aside>
-<br/><button onclick="updateTextArea()">Confirmar Seleção</button>
+<br/><button type = "submit" class="" name= "armarioA" onclick="updateTextArea()">Confirmar Seleção</button> 
 </div>  
-
-<div class="displayerBoxes">
-  <table class="Displaytable">
-  <tr>
-    <th>Nome</th>
-    <th>Armário</th>
-  </tr>
-
-  <tr>
-    <td><textarea id="nameDisplay"></textarea></td>
-    <td><textarea id="seatsDisplay"></textarea></td>
-  </tr>
-</table>
-</center>
-</div>
+</form>
 
       <p></p>
     </div>
 
     <div class="alterar">
-      <form class="form" method="post" action="../alterar.php">
+      <form class="form" method="post" action="../alterarAluno.php">
       <h2>Nome Completo</h2>
         <input name = "nomeCompleto" value = "<?php echo $_SESSION ['nome']?>"> </input>
 
@@ -224,7 +223,7 @@ session_start();?>
         
       </br>
 
-      <button class="" name= "alterar" >Alterar</button>
+      <button class="" name= "alterarA" >Alterar</button>
 
       </form>
     </div>

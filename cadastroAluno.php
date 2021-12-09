@@ -47,7 +47,7 @@ if (isset($_POST['professor'])) {
         echo "<script>alert('Email já cadastrado')</script>";
         echo "<script>window.location.href='src/aluno.php'</script>";
     } else {
-        $sql = "insert into docente(SIAPE, email, senha, nome, rg, foto, telefone, data_nasc) values ('$matricula','$email','$password','$nomeCompleto','$rg', '$foto','$phone','$dataDeNascimento')";
+        $sql = "insert into docente(SIAPE, email, senha, nomeD, rg, foto, telefone, data_nasc) values ('$matricula','$email','$password','$nomeCompleto','$rg', '$foto','$phone','$dataDeNascimento')";
         $query = $mysqli->query($sql) or die($mysqli->error);
 
         if (!$query) {

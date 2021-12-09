@@ -46,13 +46,6 @@ body
       background-color:#ccc;
   }
   
-  .seats
-  {
-    border:1px solid red;background:yellow;
-  } 
-  
-  
-  
   .seatGap
   {
     width:40px;
@@ -67,11 +60,17 @@ body
   {
     text-align:center;
   }
-  
-  
+
+  table.center {
+    width: 70%;
+    position: absolute;
+    scroll-margin-right: 15%;
+  }
+
   .Displaytable
   {
     text-align:center;
+   
   }
   .Displaytable td, .Displaytable th {
       border: 1px solid;
@@ -91,7 +90,7 @@ body
       margin-right:18px;
   }
   
-  input[type=checkbox]:before {
+  .seatsG:before {
       content: "";
       width: 15px;
       height: 15px;
@@ -99,14 +98,28 @@ body
       vertical-align:middle;
       text-align: center;
       box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
-      background-color:#ccc;
+      background-color:green;
   }
   
   input[type=checkbox]:checked:before {
-      background-color:Green;
+    background-color:yellow;
       font-size: 15px;
     }
  
+    .seatsR:before {
+      content: "";
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      vertical-align:middle;
+      text-align: center;
+      box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+      background-color:red;
 
+  }
 
-  
+  .qualquercoisa {
+    display: block;
+    height: 350px;
+    overflow-y: scroll;
+  }

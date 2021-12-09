@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('conexao.php');
-if (isset($_POST['alterar'])) {
+if (isset($_POST['alterarA'])) {
    
     $matricula = $_POST["matricula"];
     $nomeCompleto = $_POST["nomeCompleto"];
@@ -12,13 +12,12 @@ if (isset($_POST['alterar'])) {
     $rg = $_POST["rg"];
     $dataDeNascimento = $_POST["dataDeNascimento"];
     $phone = $_POST["phone"];
-    $foto = $_POST["foto"];
-    $cod =  $_SESSION['cod'];
+    $codA =  $_SESSION['codA'];
 
 
         $sql = "Update aluno set
             matricula = '$matricula', email = '$email', senha = '$password', nome = '$nomeCompleto', rg = '$rg', telefone = '$phone', data_nasc = '$dataDeNascimento', curso = '$curso', turma = '$turma'
-            WHERE cod = '$cod'";
+            WHERE codA = '$codA'";
         $query = $mysqli->query($sql) or die($mysqli->error);
 
         if (!$query) {
@@ -31,7 +30,6 @@ if (isset($_POST['alterar'])) {
             $_SESSION['curso'] = $curso;
             $_SESSION['turma'] = $turma;
             $_SESSION['rg'] = $rg;
-            $_SESSION['foto'] = $foto;
             $_SESSION['telefone'] = $phone;
             $_SESSION['data_nasc'] = $dataDeNascimento;
             echo "<script>window.location.href='src/telaperfilAluno.php'</script>";

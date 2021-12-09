@@ -8,6 +8,7 @@ session_start();?>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <link rel="stylesheet" href="../assets/css/telaperfil.css" />
+  <link rel="stylesheet" href="../assets/css/arm.css" />
   <script src="../assets/js/app.js"></script>
 </head>
 <body>
@@ -25,7 +26,7 @@ session_start();?>
   <div class="rightbox">
     <div class="profile ">
       <h1>Informações de Perfil</h1>
-      <div ><img class="imagem-perfil" src="https://image.flaticon.com/icons/svg/236/236831.svg">
+      <div >
       
         <h2>Nome Completo</h2>
         <p> <?php echo $_SESSION['nome'];?> </p>
@@ -46,21 +47,54 @@ session_start();?>
         <h2>Email</h2>
         <p><?php echo $_SESSION['email'];?>  </p>
         <h2>Senha</h2>
-        <p><?php echo $_SESSION['senha'];?> <button class="btn">Alterar</button></p> 
+        <p><?php echo $_SESSION['senha'];?> 
       </div>
     </div>
     <div class="configuracoes ">
-      <h1>Configurações da Conta</h1>
-      <h2>Sync Watchlist to My Stuff<button class="btn">sync</button></h2>
-      <p></p>
-      <h2>Hold Your Subscription<button class="btn">hold</button></h2>
-      <p></p>
-      <h2>Cancel Your Subscription <button class="btn">cancel</button></h2>
-      <p></p>
-      <h2>Your Devices <button class="btn">Manage Devices</button></h2>
-      <p></p>
-      <h2>Referrals <button class="btn">get $10</button></h2>
-      <p></p>
+      <div class="displayerBoxes">
+        <table class = "Displaytable center">
+        
+        <tbody class= "qualquercoisa">
+          <tr><th>Alunos</th></tr>
+        <tr>
+          <th>Nome</th>
+          <th>Armário</th>
+        </tr>
+        <?php 
+            $result_usu =  "SELECT aluno.nome, armario.numero, armario.disponivel FROM armario 
+            inner join aluno on armario.fk_cod_usuario = aluno.codA";
+           
+            $resultado_usu = mysqli_query($mysqli, $result_usu);
+            while($row_usu = mysqli_fetch_assoc($resultado_usu))
+                if ($row_usu ['disponivel'] == 1) {
+            {?>
+                    <tr>
+                        <td ><textarea id="nameDisplay" disabled><?php echo $row_usu['nome'];?></textarea></td>
+                        <td ><textarea id="seatsDisplay" disabled><?php echo $row_usu['numero'];?></textarea></td>
+                    </tr>
+        <?php }}?>
+        <tr><th>Docentes</th></tr>
+        <tr>
+          <th>Nome</th>
+          <th>Armário</th>
+        </tr>
+        <?php 
+            $result_usuD =  "SELECT docente.nomeD, armario.numero, armario.disponivel FROM armario 
+            inner join docente on armario.fk_cod_docente = docente.codD";
+           
+            $resultado_usuD = mysqli_query($mysqli, $result_usuD);
+            while($row_usuD = mysqli_fetch_assoc($resultado_usuD))
+                if ($row_usuD ['disponivel'] == 1) {
+            {?>
+                    <tr>
+                        <td ><textarea id="nameDisplay" disabled><?php echo $row_usuD['nomeD'];?></textarea></td>
+                        <td ><textarea id="seatsDisplay" disabled><?php echo $row_usuD['numero'];?></textarea></td>
+                    </tr>
+        <?php }}?>
+        </tbody>
+        </table>
+
+      </div>
     </div>
     
   </div>

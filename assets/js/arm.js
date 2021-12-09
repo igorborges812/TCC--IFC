@@ -20,6 +20,7 @@
   }
   
   function myFunction() {
+    document.getElementById("seatsR").disabled = true
     alert($("input:checked").length);
   }
   
@@ -34,6 +35,7 @@
   });
   
   
+  /*$(":checked").prop("disabled", false); */
 
   
 

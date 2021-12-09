@@ -16,7 +16,7 @@ session_start();?>
     <div class="container">
         <div class="content first-content">
             <div class="first-column">
-                <h2 class="title title-first">Bem Vindo!</h2>
+                <h2 class="title title-first">Bem-Vindo!</h2>
                 <p class="description description-primary">Caso não possua uma conta, cadastre-se</p>
                 <p class="description description-primary">com suas informações pessoais.</p>
                 <button id="signin" class="btn btn-primary">Cadastrar</button>

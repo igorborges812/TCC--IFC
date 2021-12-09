@@ -25,10 +25,10 @@ session_start();?>
   <div class="rightbox">
     <div class="profile ">
       <h1>Informações de Perfil</h1>
-      <div ><img class="imagem-perfil" src="https://image.flaticon.com/icons/svg/236/236831.svg">
+      <div >
       
         <h2>Nome Completo</h2>
-        <p> <?php echo $_SESSION['nome'];?> </p>
+        <p> <?php echo $_SESSION['nomeD'];?> </p>
         <h2>SIAPE</h2>
         <p><?php echo $_SESSION['SIAPE'];?> </p>
        <h2>Data de Nascimento</h2>
@@ -46,23 +46,107 @@ session_start();?>
         <h2>Email</h2>
         <p><?php echo $_SESSION['email'];?>  </p>
         <h2>Senha</h2>
-        <p><?php echo $_SESSION['senha'];?> <button class="btn">Alterar</button></p>
+        <p><?php echo $_SESSION['senha'];?>
+        <p><button id="carlos"class="btn1">Alterar</button> </p>
       </div>
     </div>
     <div class="configuracoes ">
-      <h1>Configurações da Conta</h1>
-      <h2>Sync Watchlist to My Stuff<button class="btn">sync</button></h2>
-      <p></p>
-      <h2>Hold Your Subscription<button class="btn">hold</button></h2>
-      <p></p>
-      <h2>Cancel Your Subscription <button class="btn">cancel</button></h2>
-      <p></p>
-      <h2>Your Devices <button class="btn">Manage Devices</button></h2>
-      <p></p>
-      <h2>Referrals <button class="btn">get $10</button></h2>
+    <h1>Escolha Seu Armário</h1>
+      <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/arm.css" />
+    
+</head>
+
+<body onload="onLoaderFunc()">
+ 
+<form class="forma" method="post" action= "../armario.php">
+<div class="seatStructure">
+  
+<table id="seatsBlock">
+ <p id="notification"></p>
+  <tr>
+    <td colspan="14"><div class="screen">Armários</div></td>
+    <td rowspan="20">             
+
+  <?php 
+  $result_usu =  "SELECT * FROM armario";
+  $resultado_usu = mysqli_query($mysqli, $result_usu);
+  $contador = 0;
+  while($row_usu = mysqli_fetch_assoc($resultado_usu)){
+    
+	if($contador == 0){?>
+  <tr>
+	<?php }?>
+
+    <?php 
+      if ($row_usu['disponivel'] == 0 ){ ?>
+       <td><input type="checkbox" class = 'seatsG' name = "meucheckbox" value=" <?php echo $row_usu['numero'] ; ?>"></td>
+            
+
+
+     <?php } 
+     else if ($row_usu['disponivel'] == 1 ){ ?>
+     <td><input type="checkbox" class = 'seatsR' id= "seatsR" name = "meucheckbox" value=" <?php echo $row_usu['numero'] ; ?>" disabled></td>
+
+     <?php } ?>
+
+		<?php
+	$contador++; 
+	if($contador == 10){?>
+		</tr>
+	<?php $contador = 0;	} ?>
+  <?php }?>
+
+</tr>
+</table>
+
+<aside>
+  <p><ul type="square">
+<li id= "selecionado">Selecionado</li>
+<li id= "reservado">Reservado</li>
+<li id= "livre">Livre</li>
+</ul></p>
+</aside>
+<br/><button type = "submit" class="" name= "armarioD" onclick="updateTextArea()">Confirmar Seleção</button> 
+</div>  
+</form>
+
       <p></p>
     </div>
-    
+
+    <div class="alterar">
+      <form class="form" method="post" action="../alterarDocente.php">
+      <h2>Nome Completo</h2>
+        <input name = "nomeCompleto" value = "<?php echo $_SESSION ['nomeD']?>"> </input>
+
+      <h2> Senha </h2>
+        <input name="password" value="Senha"> </input>
+
+      <h2>SIAPE</h2>
+        <input name= "SIAPE" value = '<?php echo $_SESSION ['SIAPE']?>'> </input>
+
+      <h2>Data de Nascimento</h2>
+        <input name= "dataDeNascimento" value = '<?php echo $_SESSION ['data_nasc']?>'></input>
+
+      <h2>rg</h2>
+        <input name= "rg" value = "<?php echo $_SESSION ['rg']?>"> </input>
+
+      <h2>Telefone</h2>
+        <input name="phone" value = "<?php echo $_SESSION ['telefone']?>">  </input>
+
+      <h2>Email</h2>
+        <input name= "email" value = "<?php echo $_SESSION ['email']?>">  </input>
+        
+      </br>
+
+      <button class="" name= "alterarD" >Alterar</button>
+
+      </form>
+    </div>
   </div>
 </div>
 <script src="../assets/js/jquery-3.2.1.min.js"></script>
@@ -82,6 +166,11 @@ document.getElementById('profile').onclick = function(){
                 $('.configuracoes').hide();
                 $('.profile').show();
             }
+document.getElementById('carlos').onclick = function (){
+                $('.configuracoes').hide();
+                $('.profile').hide();
+                $('.alterar').show();
+}
 </script>
 
 </body>
