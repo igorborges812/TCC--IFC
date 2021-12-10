@@ -8,6 +8,7 @@ session_start();?>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <link rel="stylesheet" href="../assets/css/telaperfil.css" />
+  <link rel="stylesheet" href="../assets/css/arm.css" />
   <script src="../assets/js/app.js"></script>
 </head>
 <body>
@@ -52,6 +53,27 @@ session_start();?>
     </div>
     <div class="configuracoes ">
     <h1>Escolha Seu Armário</h1>
+    <table class= "tableAD"> 
+        <tbody>
+        <tr>
+          <th class= "nometable">Nome</th>
+          <th class= "armariotable">Armário</th>
+        </tr>
+        <?php 
+            $result_usu =  "SELECT docente.nomeD, armario.numero, armario.fk_cod_docente FROM armario 
+            inner join docente on armario.fk_cod_docente = docente.codD";
+           
+            $resultado_usu = mysqli_query($mysqli, $result_usu);
+            while($row_usu = mysqli_fetch_assoc($resultado_usu))
+                if ($row_usu ['fk_cod_docente'] == $_SESSION ['codD']) {
+            {?>
+                    <tr>
+                        <td ><textarea id="nameDisplay" disabled><?php echo $row_usu['nomeD'];?></textarea></td>
+                        <td ><textarea id="seatsDisplay" disabled><?php echo $row_usu['numero'];?></textarea></td>
+                    </tr>
+        <?php }}?>
+        </tbody>
+      </table>
       <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -161,10 +183,12 @@ session_start();?>
 document.getElementById('settings').onclick = function(){
                 $('.configuracoes').show();
                 $('.profile').hide();
+                $('.alterar').hide();
             }
 document.getElementById('profile').onclick = function(){
                 $('.configuracoes').hide();
                 $('.profile').show();
+                $('.alterar').hide();
             }
 document.getElementById('carlos').onclick = function (){
                 $('.configuracoes').hide();
@@ -172,6 +196,6 @@ document.getElementById('carlos').onclick = function (){
                 $('.alterar').show();
 }
 </script>
-
+<script src="../assets/js/arm.js"></script>
 </body>
 </html>

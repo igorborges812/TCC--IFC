@@ -10,12 +10,12 @@ if (isset($_POST['alterarD'])) {
     $rg = $_POST["rg"];
     $dataDeNascimento = $_POST["dataDeNascimento"];
     $phone = $_POST["phone"];
-    $codD =  $_SESSION['codD'];
+    $cod =  $_SESSION['codD'];
 
 
         $sql = "Update docente set
             SIAPE = '$SIAPE', email = '$email', senha = '$password', nomeD = '$nomeCompleto', rg = '$rg', telefone = '$phone', data_nasc = '$dataDeNascimento'
-            WHERE codD = '$codD'";
+            WHERE codD = '$cod'";
         $query = $mysqli->query($sql) or die($mysqli->error);
 
         if (!$query) {

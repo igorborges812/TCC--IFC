@@ -123,3 +123,20 @@ body
     height: 350px;
     overflow-y: scroll;
   }
+
+table.tableAD {
+  margin-top: -25px;
+
+  }
+
+  th.nometable {
+    font-family: heading;
+    color: #4D8C78;
+    font-size: 1em;
+  }
+
+  th.armariotable {
+    font-family: heading;
+    color: #4D8C78;
+    font-size: 1em;
+  }

@@ -8,6 +8,7 @@ session_start();?>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <link rel="stylesheet" href="../assets/css/telaperfil.css" />
+  <link rel="stylesheet" href="../assets/css/arm.css" />
   <script src="../assets/js/app.js"></script>
 </head>
 <body>
@@ -60,6 +61,27 @@ session_start();?>
     </div>
     <div class="configuracoes ">
       <h1>Escolha Seu Armário</h1>
+      <table > 
+        <tbody>
+        <tr>
+          <th >Nome</th>
+          <th >Armário</th>
+        </tr>
+        <?php 
+            $result_usu =  "SELECT aluno.nome, armario.numero, armario.fk_cod_usuario FROM armario 
+            inner join aluno on armario.fk_cod_usuario = aluno.codA";
+           
+            $resultado_usu = mysqli_query($mysqli, $result_usu);
+            while($row_usu = mysqli_fetch_assoc($resultado_usu))
+                if ($row_usu ['fk_cod_usuario'] == $_SESSION ['codA']) {
+            {?>
+                    <tr>
+                        <td ><textarea id="nameDisplay" disabled><?php echo $row_usu['nome'];?></textarea></td>
+                        <td ><textarea id="seatsDisplay" disabled><?php echo $row_usu['numero'];?></textarea></td>
+                    </tr>
+        <?php }}?>
+        </tbody>
+</table>
       <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -74,6 +96,8 @@ session_start();?>
 <form class="forma" method="post" action= "../armario.php">
 <div class="seatStructure">
   
+
+
 <table id="seatsBlock">
  <p id="notification"></p>
   <tr>

@@ -5,7 +5,7 @@ if (isset($_POST['armarioA'])){
 
 
 $seatsG = $_POST["meucheckbox"];
-$cod = $_SESSION['cod'];
+$cod = $_SESSION['codA'];
 
 $sql = "Update armario set
             disponivel = 1, fk_cod_usuario = '$cod'
@@ -24,7 +24,7 @@ $sql = "Update armario set
 
 
         $seatsG = $_POST["meucheckbox"];
-        $cod = $_SESSION['cod'];
+        $cod = $_SESSION['codD'];
         
         $sql = "Update armario set
                     disponivel = 1, fk_cod_docente = '$cod'
